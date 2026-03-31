@@ -1,5 +1,19 @@
 # Java Fundamentals - A Beginner's Guide
 
+## Quick Reference (1-Minute Recall)
+
+- Computer follows exact steps, not intent.
+- Java starts at `main(String[] args)`.
+- Code runs top to bottom.
+- Output: `System.out.println(...)`.
+- `+` does math with numbers, joins with strings.
+- Operator order: `()`, `* / %`, `+ -`.
+- Data types: `int`, `double`, `boolean`, `char`, `String`.
+- Variable flow: declare -> initialize -> use -> reassign.
+- Assignment direction: right -> left.
+- Input: `Scanner scn = new Scanner(System.in);` then `nextInt()`, `nextLine()` etc.
+- Avoid common bugs: integer division, quote mismatch, uninitialized variables.
+
 ## Understanding the Basics
 
 ### Why Computers Are "Dumb"
@@ -159,7 +173,7 @@ Sometimes you need special characters in your output. Escape sequences let you i
 | `\t` | Tab (indentation) | `"Name\tAge"` |
 | `\\` | Backslash | `"Path: C:\\Users"` |
 | `\"` | Double quote (inside string) | `"He said \"Hello\""` |
-| `\'` | Single quote (inside string) | `'It\'s'` |
+| `\'` | Single quote (inside string) | `"It\'s Java"` |
 
 ### Examples
 
@@ -598,36 +612,106 @@ public static void main(String[] args) {
 ## Summary Checklist
 
 ✅ **Computers are literal** - they need exact instructions  
-✅ **Output with** `System.out.println()`  
-✅ **Operators follow** BODMAS  
-✅ **Data types** tell Java what kind of value to store  
-✅ **Variables** are labeled boxes for storing values  
-✅ **Declare and initialize** variables before using them  
+✅ **Java starts from** `main(String[] args)`  
+✅ **Program flow is sequential** (top to bottom)  
+✅ **Comments** help explain intent (`//`, `/* ... */`)  
+✅ **Output uses** `System.out.println()`  
+✅ **Escape sequences** format output (`\n`, `\t`, `\"`)  
+✅ **Operators follow** BODMAS and left-to-right for same rank  
+✅ **Data types** define what values are valid  
+✅ **Variables** are declared, initialized, then reused/reassigned  
 ✅ **Assignment** is right-side to left-side  
-✅ **Input** uses Scanner class  
+✅ **Input** uses Scanner methods like `nextInt()` and `nextLine()`  
+✅ **You can spot beginner errors** like type mismatch and integer division  
 
 ---
 
 ## Practice Questions
 
-1. What will this print?
+1. Predict the exact output:
 ```java
-System.out.println(5 + 3 * 2);
+System.out.println(8 + 2 * 3);
+System.out.println((8 + 2) * 3);
 ```
+Hint: Same numbers, different grouping.
 
-2. What's the difference between these?
+2. Predict the output order:
 ```java
-System.out.println(10 + 5);
-System.out.println("10" + "5");
+System.out.println("A" + 5 + 2);
+System.out.println(5 + 2 + "A");
 ```
+Hint: Java evaluates left to right.
 
-3. Create a variable that stores your age and print it.
-
-4. What's the error here?
+3. Fix this code so it compiles and prints your name and age:
 ```java
-int age = 25;
-int age = 26;
+String name = 'Alex';
+int age = "19";
+System.out.println(name + " " + age);
 ```
+Hint: Check quote type and variable type.
+
+4. Write a program that stores two integers and prints:
+`Sum`, `Difference`, `Product`, `Quotient`, `Remainder`.
+Hint: You already know all five arithmetic operators.
+
+5. What will this print, and why?
+```java
+int result = 9 / 4;
+System.out.println(result);
+```
+Hint: Both operands are the same data type.
+
+6. Rewrite Question 5 so the output becomes `2.25`.
+Hint: Change the operands, not just the variable on the left.
+
+7. Find and fix all errors:
+```java
+int score;
+System.out.println(score);
+score = 100;
+int score = 200;
+```
+Hint: Think initialization first, redeclaration second.
+
+8. Write a program that asks user for two integers and prints their sum.
+Hint: You need `Scanner`, `nextInt()`, and one output line.
+
+9. Write a program that takes first name and age as input, then prints:
+`Hello <name>, next year you will be <age+1>`
+Hint: One input is text, one is numeric.
+
+10. Predict output:
+```java
+System.out.println("Name\tAge");
+System.out.println("Riya\t21");
+```
+Hint: Visual spacing matters here.
+
+11. Write one line that prints exactly:
+`He said "Java is easy"`
+Hint: You need an escape sequence for quotes.
+
+12. In your own words, explain each part of:
+`public static void main(String[] args)`
+Hint: Four keywords/parts, four meanings.
+
+13. Create three valid variable names and three invalid ones.
+For each invalid name, say why it's invalid.
+Hint: Check starting character, keyword usage, and naming style.
+
+14. Trace this code and write final value of `x`:
+```java
+int x = 10;
+x += 5;
+x *= 2;
+x -= 4;
+System.out.println(x);
+```
+Hint: Treat each line as state change.
+
+15. Mini challenge: Write a short program that prints a formatted 2-row table:
+`Item`, `Price` on first line, and two sample items below it.
+Hint: Use `\t` and `\n` together.
 
 ---
 
