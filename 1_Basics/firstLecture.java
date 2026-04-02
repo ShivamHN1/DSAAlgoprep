@@ -150,57 +150,5 @@ public class firstLecture {
         System.out.println("String: " + str);
         System.out.println("boolean: " + bool);
         // Why do we need different data types? Different data types allow us to store different kinds of data efficiently. For example, if you only need to store small integers, using a byte or short can save memory compared to using an int or long. Similarly, using a float instead of a double can save memory when you only need a few decimal places of precision. Using the appropriate data type for your variables can help optimize memory usage and improve performance in your Java programs.
-
-        // 6. Operators in Java:
-        // Java provides various operators for performing operations on variables and values. These include:
-        // Arithmetic Operators: +, -, *, /, %
-        // Relational Operators: ==, !=, >, <, >=, <=
-        // Logical Operators: &&, ||, !
-        // Assignment Operators: =, +=, -=, *=, /=, %=
-        // Example of using operators:
-        int g = 10;
-        int h = 5;
-        // Arithmetic Operators in Java:
-        System.out.println("g + h = " + (g + h)); // Output: g + h = 15 as addition is being performed and the '+' operator is called the addition operator. It takes two operands (g and h) and returns their sum. In this case, it adds 10 and 5 to get 15.
-        System.out.println("g - h = " + (g - h)); // Output: g - h = 5 as subtraction is being performed and the '-' operator is called the subtraction operator. It takes two operands (g and h) and returns their difference. In this case, it subtracts 5 from 10 to get 5.
-        System.out.println("g * h = " + (g * h)); // Output: g * h = 50 as multiplication is being performed and the '*' operator is called the multiplication operator. It takes two operands (g and h) and returns their product. In this case, it multiplies 10 and 5 to get 50.
-        System.out.println("g / h = " + (g / h)); // Output: g / h = 2 as division is being performed and the '/' operator is called the division operator. It takes two operands (g and h) and returns their quotient. In this case, it divides 10 by 5 to get 2.
-        System.out.println("g % h = " + (g % h)); // Output: g % h = 0 as modulus is being performed and the '%' operator is called the modulus operator. It takes two operands (g and h) and returns their remainder. In this case, it finds the remainder when 10 is divided by 5.
-        /*
-        Note - Operator Precedence in Java:
-        In Java, operators have a specific precedence that determines the order in which they are evaluated in an expression. For example, multiplication and division have higher precedence than addition and subtraction. This means that in the expression g + h * i, the multiplication will be performed before the addition. You can use parentheses to change the order of evaluation. For example, (g + h) * i will perform the addition first before the multiplication. Understanding operator precedence is important to ensure that your expressions are evaluated correctly and to avoid unexpected results in your Java programs.
-        So , in simple format 
-        1. Parentheses ()
-        2. Unary operators (like !, ++, --)
-        3. Multiplication *, Division /, Modulus %
-        4. Addition +, Subtraction -
-        5. Relational operators (==, !=, >, <, >=, <=)
-        6. Logical operators (&&, ||)
-        Also, when operators have the same precedence, they are evaluated from left to right. For example, in the expression g - h + i, both subtraction and addition have the same precedence, so they will be evaluated from left to right, resulting in (g - h) + i. Understanding operator precedence and associativity is crucial for writing correct and efficient Java code.
-        Another Note - Learning precedence properly involes a lot of stuff for most of the time knowing precedence withing the arithmetic operators like *, /, % and +, - is sufficient for most of the cases. So, you can focus on those operators first and then gradually learn about the precedence of other operators as you progress in your Java programming journey.
-        And simply use parantheses to ensure the correct order of evaluation in complex expressions, which can help you avoid confusion and make your code more readable and keep the code as simple as possible unless doing micro optimization is required.
-        */
-
-        // Relational Operators in Java:
-        System.out.println("g == h: " + (g == h)); // Output: g == h: false as equality comparison is being performed and the '==' operator is called the equality operator. It takes two operands (g and h) and returns true if they are equal, false otherwise. In this case, it compares 10 and 5 and returns false.
-        System.out.println("g != h: " + (g != h)); // Output: g != h: true as inequality comparison is being performed and the '!=' operator is called the inequality operator. It takes two operands (g and h) and returns true if they are not equal, false otherwise. In this case, it compares 10 and 5 and returns true.
-        System.out.println("g > h: " + (g > h)); // Output: g > h: true as greater-than comparison is being performed and the '>' operator is called the greater-than operator. It takes two operands (g and h) and returns true if g is greater than h, false otherwise. In this case, it compares 10 and 5 and returns true.
-        System.out.println("g < h: " + (g < h)); // Output: g < h: false as less-than comparison is being performed and the '<' operator is called the less-than operator. It takes two operands (g and h) and returns true if g is less than h, false otherwise. In this case, it compares 10 and 5 and returns false.
-        System.out.println("g >= h: " + (g >= h)); // Output: g >= h: true as greater-than-or-equal comparison is being performed and the '>=' operator is called the greater-than-or-equal operator. It takes two operands (g and h) and returns true if g is greater than or equal to h, false otherwise. In this case, it compares 10 and 5 and returns true.
-        System.out.println("g <= h: " + (g <= h)); // Output: g <= h: false as less-than-or-equal comparison is being performed and the '<=' operator is called the less-than-or-equal operator. It takes two operands (g and h) and returns true if g is less than or equal to h, false otherwise. In this case, it compares 10 and 5 and returns false.
-
-        // Logical Operators in Java:
-        System.out.println("g > 0 && b > 0: " + (g > 0 && b > 0)); // Output: g > 0 && b > 0: true as logical AND is being performed and the '&&' operator is called the logical AND operator. It takes two operands (g > 0 and b > 0) and returns true if both are true, false otherwise. In this case, it checks if both 10 and 5 are positive and returns true.
-        System.out.println("g > 0 || b < 0: " + (g > 0 || b < 0)); // Output: g > 0 || b < 0: true as logical OR is being performed and the '||' operator is called the logical OR operator. It takes two operands (g > 0 and b < 0) and returns true if at least one is true, false otherwise. In this case, it checks if either 10 is positive or 5 is negative and returns true.
-        System.out.println("!(g > h): " + !(g > h)); // Output: !(g > h): false as logical NOT is being performed and the '!' operator is called the logical NOT operator. It takes one operand (g > h) and returns the opposite boolean value. In this case, it negates the result of the comparison between 10 and 5.
-
-        // Assignment Operators in Java:
-        int a = 10; // Simple assignment
-        a += 5; // Equivalent to a = a + 5; Output: a = 15
-        a -= 3; // Equivalent to a = a - 3; Output: a = 12
-        a *= 2; // Equivalent to a = a * 2; Output: a = 24
-        a /= 4; // Equivalent to a = a / 4; Output: a = 6
-        a %= 5; // Equivalent to a = a % 5; Output: a = 1
-        System.out.println("Final value of a: " + a); // Output: Final value of a: 1
     }
 }
