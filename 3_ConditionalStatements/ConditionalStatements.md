@@ -2,7 +2,7 @@
 
 ## Quick Reference (1-Minute Recall)
 
-- Conditional statements use **comparison operators** to check conditions.
+- Conditional statements use **comparison operators** to check conditions.z
 - Comparison operators: `==`, `!=`, `<`, `>`, `<=`, `>=`
 - `if` executes a block of code only if a condition is `true`.
 - `if-else` executes one block if the condition is `true`, another if it's `false`.
