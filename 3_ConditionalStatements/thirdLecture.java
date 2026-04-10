@@ -138,5 +138,53 @@ public class thirdLecture {
 
 
         */ 
+
+        /*
+        jshell
+|  Welcome to JShell -- Version 21.0.10
+|  For an introduction type: /help intro
+
+jshell> int x = 100 
+x ==> 100
+
+jshell> x 
+x ==> 100
+
+jshell> long y = x 
+y ==> 100
+
+jshell> y
+y ==> 100
+
+jshell> int small = y
+|  Error:
+|  incompatible types: possible lossy conversion from long to int
+|  int small = y;
+|              ^
+
+jshell> small
+|  Error:
+|  cannot find symbol
+|    symbol:   variable small
+|  small
+|  ^---^
+
+jshell> int small = (int)y
+small ==> 100
+
+jshell> small
+small ==> 100
+
+jshell> long BigNum = 100000000000000L
+BigNum ==> 100000000000000
+
+jshell> Big
+BigDecimal   BigInteger   BigNum       
+jshell> BigNum
+BigNum ==> 100000000000000
+
+jshell> int smallnum = (int) BigNum
+smallnum ==> 276447232
+        */
     }
 }

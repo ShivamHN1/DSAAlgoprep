@@ -1,5 +1,9 @@
 # Java Fundamentals - Conditional Statements
 
+# technical Debt:
+
+- Covering literals and primitives and objects in java a bit for understanding whats happening behind the scenes or just being aware of their existence.
+
 ## Quick Reference (1-Minute Recall)
 
 - Conditional statements use **comparison operators** to check conditions.z
@@ -71,6 +75,9 @@ float discount = 0.15f;        // explicitly float
 // These are double (can also be explicit)
 double price = 99.99;          // implicitly double
 double pi = 3.14159265;        // implicitly double
+
+//This is float 
+System.out.println(2.38f)     // float: 2.38
 ```
 
 Think of the `f` suffix as a safety mechanism: it forces you to be intentional about using the lower-precision `float` type.
