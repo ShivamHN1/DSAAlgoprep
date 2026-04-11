@@ -78,6 +78,8 @@ public static int add(int a, int b) {
 }
 ```
 
+**Note on `public static`**: You will see these words in front of every function you write. For now, just type them before each function definition. You do not need to understand what they mean yet—we will learn about them later. Think of them as a Java requirement for now.
+
 This function takes two integers, adds them, and returns the result.
 
 ---
