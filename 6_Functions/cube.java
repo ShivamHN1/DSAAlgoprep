@@ -1,13 +1,14 @@
 import java.util.Scanner;
 public class cube {
-    public static int cube(int n) {
+    public static int cubing(int n) {
         return n * n * n;
     }
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
         System.out.print("Enter a number: ");
         int num = scn.nextInt();
-        int result = cube(num);
+        int result = cubing(num);
         System.out.println("The cube of " + num + " is: " + result);
+        scn.close();
     }
 }

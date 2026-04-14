@@ -13,5 +13,6 @@ public class factorial{
         int num = scn.nextInt();
         int Factorial = Fact(num);
         System.out.println(Factorial);
+        scn.close();
     }
 }
