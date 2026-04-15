@@ -9,7 +9,11 @@
 - `void` means the function does not return a value.
 - `main` is the starting point of a Java program, but it can call other functions.
 - Functions make code shorter, clearer, and easier to test.
-- Factorial and `nCr` are classic beginner problems that are best solved with functions.
+- Factorial, `nCr`, and `nPr` are classic beginner problems solved with functions.
+- DRY means avoid repeating the same logic; write once and reuse.
+- Java is pass by value (including object references).
+- Call stack tracks function calls and returns.
+- Scope decides where a variable is visible.
 
 ## Why Functions Matter
 
@@ -364,7 +368,72 @@ Output:
 
 ---
 
-## 9. A Simple `add` Function
+## 9. `nPr` (Permutations) Using Functions
+
+After combinations (`nCr`), the next important formula is permutations (`nPr`).
+
+### What Is `nPr`?
+
+`nPr` means the number of ways to arrange `r` items chosen from `n` items.
+
+The formula is:
+
+$$
+nPr = \frac{n!}{(n-r)!}
+$$
+
+### Example
+
+For `n = 5` and `r = 2`:
+
+$$
+5P2 = \frac{5!}{3!} = \frac{120}{6} = 20
+$$
+
+### Example Code
+
+```java
+public static int fact(int n) {
+	int ans = 1;
+
+	for (int i = 1; i <= n; i++) {
+		ans = ans * i;
+	}
+
+	return ans;
+}
+
+public static int nPr(int n, int r) {
+	int nfact = fact(n);
+	int nmrfact = fact(n - r);
+
+	int ans = nfact / nmrfact;
+	return ans;
+}
+```
+
+### Example Call
+
+```java
+int result = nPr(5, 2);
+System.out.println(result);
+```
+
+Output:
+
+```text
+20
+```
+
+### Relation Between `nCr` and `nPr`
+
+- `nCr` counts selections.
+- `nPr` counts arrangements.
+- For the same `n` and `r`, `nPr` is usually larger because order matters.
+
+---
+
+## 10. A Simple `add` Function
 
 Sometimes a function is just a clean way to group a small task.
 
@@ -399,7 +468,7 @@ This is not about complexity. It is about understanding the function structure:
 
 ---
 
-## 10. A Simple `cube` Function
+## 11. A Simple `cube` Function
 
 Another beginner function is cube.
 
@@ -430,7 +499,7 @@ It shows that a function can be built for a single task and then reused whenever
 
 ---
 
-## 11. Full Example: Input, Function Call, Output
+## 12. Full Example: Input, Function Call, Output
 
 Here is a complete program structure.
 
@@ -468,7 +537,7 @@ That separation is good programming style.
 
 ---
 
-## 12. Function Flow: What Happens Step by Step
+## 13. Function Flow: What Happens Step by Step
 
 When you call a function, Java follows a clear flow.
 
@@ -490,7 +559,7 @@ This is the mental model you should always keep in mind.
 
 ---
 
-## 13. Return Statement Rules
+## 14. Return Statement Rules
 
 The `return` statement sends a value back from a function.
 
@@ -511,7 +580,189 @@ You should place `return` where the answer is already ready. Do not keep code af
 
 ---
 
-## 14. Common Beginner Mistakes in Functions
+## 15. DRY Principle (Don't Repeat Yourself)
+
+Functions are one of the easiest ways to follow the DRY principle.
+
+DRY means: if the same logic appears multiple times, write it once and reuse it.
+
+### Non-DRY Approach
+
+```java
+int a = 3;
+int cubeA = a * a * a;
+
+int b = 5;
+int cubeB = b * b * b;
+
+int c = 7;
+int cubeC = c * c * c;
+```
+
+This repeats the same idea again and again.
+
+### DRY Approach
+
+```java
+public static int cube(int n) {
+	return n * n * n;
+}
+
+int cubeA = cube(3);
+int cubeB = cube(5);
+int cubeC = cube(7);
+```
+
+### Why DRY Is Important
+
+- Your code becomes shorter.
+- If logic changes, you update one place instead of many.
+- Fewer repeated blocks means fewer bugs.
+
+---
+
+## 16. Call Stack: How Function Calls Are Managed
+
+When one function calls another, Java tracks those calls using the call stack.
+
+### Simple Idea
+
+- Each function call gets its own stack frame.
+- A stack frame stores local variables and execution position for that call.
+- The most recent function call runs first.
+- When it finishes, that frame is removed, and control goes back to the previous call.
+
+### Example
+
+```java
+public static void first() {
+	second();
+}
+
+public static void second() {
+	third();
+}
+
+public static void third() {
+	System.out.println("Inside third");
+}
+```
+
+Call flow:
+
+1. `main` calls `first`.
+2. `first` calls `second`.
+3. `second` calls `third`.
+4. `third` finishes and returns to `second`.
+5. `second` finishes and returns to `first`.
+6. `first` finishes and returns to `main`.
+
+Think of it as a stack of plates: the last plate put on top is removed first.
+
+At this stage, this much call stack knowledge is enough. You will use it deeply again in recursion.
+
+---
+
+## 17. Pass by Value in Java (And Why There Is No Pass by Reference)
+
+Java is always pass by value.
+
+This means a function receives a copy of what is passed.
+
+### Case 1: Primitive Types
+
+For primitives like `int`, `double`, `char`, Java copies the actual value.
+
+```java
+public static void change(int x) {
+	x = 100;
+}
+
+int a = 10;
+change(a);
+System.out.println(a); // still 10
+```
+
+`a` does not change because only a copied value was modified.
+
+### Case 2: Objects
+
+For objects, Java copies the reference value (the address-like value), not the object itself.
+
+```java
+class Box {
+	int value;
+}
+
+public static void update(Box b) {
+	b.value = 50;
+}
+```
+
+If you pass a `Box` object, the copied reference still points to the same object, so changing fields is visible outside.
+
+Important point: Java still passes a copy. It is not true pass by reference.
+
+### Why People Get Confused
+
+- Object state can change inside a function, so it feels like pass by reference.
+- But reassigning the parameter does not change the original reference in the caller.
+
+That is why the correct statement is: Java has pass by value only.
+
+---
+
+## 18. Scope of Variables
+
+Scope means where a variable can be accessed.
+
+### Local Scope
+
+A variable declared inside a function exists only inside that function.
+
+```java
+public static void demo() {
+	int x = 10;
+	System.out.println(x); // valid
+}
+```
+
+Outside `demo`, `x` does not exist.
+
+### Block Scope
+
+A variable declared inside a block (like `if`, `for`, or `while`) exists only in that block.
+
+```java
+for (int i = 0; i < 5; i++) {
+	int square = i * i;
+	System.out.println(square);
+}
+```
+
+Both `i` and `square` are not available outside the loop block.
+
+### Parameter Scope
+
+Function parameters are also local to that function.
+
+```java
+public static int add(int a, int b) {
+	return a + b;
+}
+```
+
+`a` and `b` are only valid inside `add`.
+
+### Why Scope Matters
+
+- Prevents name conflicts.
+- Keeps variables limited to where they are needed.
+- Makes code safer and easier to debug.
+
+---
+
+## 19. Common Beginner Mistakes in Functions
 
 ### Mistake 1: Forgetting to Return a Value
 
@@ -545,7 +796,7 @@ If you write the same logic two or three times, that logic probably belongs in a
 
 ---
 
-## 15. The Real Programming Idea Behind Functions
+## 20. The Real Programming Idea Behind Functions
 
 Functions are not only a Java feature. They are part of programming itself.
 
@@ -562,7 +813,7 @@ They let you think like a programmer instead of just writing code line by line.
 
 ---
 
-## 16. How to Think When Writing a Function
+## 21. How to Think When Writing a Function
 
 Before writing a function, ask:
 
@@ -576,7 +827,7 @@ If you can answer those questions, the function usually writes itself.
 
 ---
 
-## 17. Practice Summary
+## 22. Practice Summary
 
 Here is the short version of what you should remember.
 
@@ -585,9 +836,14 @@ Here is the short version of what you should remember.
 - A function is a reusable block of code with a single responsibility.
 - `void` functions perform actions.
 - Return functions calculate and send back results.
+- DRY helps remove repeated logic.
 - Parameters are written in the function definition.
 - Arguments are passed in the function call.
 - `main` is the entry point, but not the place where all logic must live.
+- `nCr` is for selections, `nPr` is for arrangements.
+- Java is pass by value, including for object references.
+- Call stack controls nested function execution order.
+- Scope decides where variables can be used.
 
 ### Mental Model
 
@@ -607,13 +863,38 @@ Think of a function as a small machine:
 
 ---
 
-## 18. Try These on Your Own
+## 23. Try These on Your Own
 
 1. Write a function to find the factorial of a number.
 2. Write a function to calculate `nCr` using factorial.
-3. Write a function that adds two numbers.
-4. Write a function that returns the cube of a number.
-5. Write a function that prints a greeting message.
+3. Write a function to calculate `nPr` using factorial.
+4. Write a function that adds two numbers.
+5. Write a function that returns the cube of a number.
+6. Write a function that prints a greeting message.
+7. Create one repeated logic block, then refactor it using DRY.
+8. Create a small example to show variable scope inside a loop.
+9. Predict the output:
+
+```java
+public static void change(int x) {
+	x = 99;
+}
+
+public static void main(String[] args) {
+	int a = 10;
+	change(a);
+	System.out.println(a);
+}
+```
+
+Then explain why Java gives that output.
+10. Create a class `Box` with one field `value`. Pass a `Box` object to a function and change `value` inside the function. Explain why the change is visible outside.
+11. Create three functions `first`, `second`, and `third` where each one calls the next. Print a line in each function before returning. Use the output order to explain call stack behavior.
+12. Write a function where a variable inside a `for` loop cannot be accessed outside the loop. Note the compiler error you get.
+13. Write one short paragraph in your own words:
+
+"Why Java is pass by value even for objects."
+14. Given `n = 6` and `r = 2`, calculate both `nCr` and `nPr` using your functions and explain the difference in one line.
 
 ---
 
@@ -625,15 +906,20 @@ Think of a function as a small machine:
 - A function can take parameters and return a value.
 - `void` means no return value.
 - `main` starts the program, but helper functions hold the logic.
-- Factorial, `nCr`, add, and cube are standard beginner examples.
+- Factorial, `nCr`, `nPr`, add, and cube are standard beginner examples.
+- DRY means avoid repeated logic by reusing functions.
+- Java uses pass by value only.
+- The call stack manages nested function calls.
+- Scope defines where each variable is visible.
 - Functions are a programming idea as much as a Java feature.
 
 ### What You Can Now Do
 
 ✓ Define and call functions
 ✓ Use parameters and return values correctly
-✓ Build reusable logic for factorial, `nCr`, add, and cube
+✓ Build reusable logic for factorial, `nCr`, `nPr`, add, and cube
 ✓ Separate program flow from problem-solving logic
+✓ Understand DRY, call stack flow, pass by value, and scope
 ✓ Write cleaner and more modular code
 
 Functions are where your code starts becoming organized software instead of just a sequence of statements.
